@@ -4,6 +4,7 @@ import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
@@ -26,6 +27,9 @@ import { InputComponent } from './components/chat/input/input.component';
 import { MainComponent } from './components/chat/main/main.component';
 import { MembersComponent } from './components/chat/members/members.component';
 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    SocketIoModule.forRoot(config),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

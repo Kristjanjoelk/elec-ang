@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ISubscription } from "rxjs/Subscription";
-import { socketService } from '../../socketservice/socketservice.js';
 import { Message } from '../../services/message';
 import { ChatService } from '../../services/chat.service';
 
@@ -34,21 +33,9 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit() {
-    // var self = this;
-    // var test = new socketService();
-    // var socket = test.connect();
-    // socket.on('connect', () => {
-    //   console.log('hallelujah, connected');
-    // });
-    // socket.on('message', (msg) => {
-    //   console.log('msg', msg);
-    //   let newMsg = new Message(msg.sender, msg.message);
-    //   self.messages.push(newMsg);
-    // });
   }
   
   ngOnDestroy() {
-    //prevent memory leak when component destroyed
      this.subscription.unsubscribe();
    }
 

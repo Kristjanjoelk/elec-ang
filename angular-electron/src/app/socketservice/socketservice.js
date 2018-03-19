@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-export class socketService {
+export class SocketService {
     constructor() {
       this.socket = null;
     }

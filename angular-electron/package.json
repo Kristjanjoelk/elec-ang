@@ -35,6 +35,7 @@
     "e2e": "npm-run-all -p pree2e:build pree2e:protractor"
   },
   "dependencies": {
+    "ng-socket-io": "^0.2.4",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
