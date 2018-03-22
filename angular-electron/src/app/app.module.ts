@@ -1,6 +1,7 @@
 import 'zone.js/dist/zone-mix';
 import 'reflect-metadata';
 import '../polyfills';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +27,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { InputComponent } from './components/chat/input/input.component';
 import { MainComponent } from './components/chat/main/main.component';
 import { MembersComponent } from './components/chat/members/members.component';
+import { QuestionComponent } from './components/chat/question/question.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -44,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainComponent,
     InputComponent,
     MembersComponent,
+    QuestionComponent,
     WebviewDirective
   ],
   imports: [

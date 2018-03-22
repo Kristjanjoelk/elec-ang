@@ -1,0 +1,18 @@
+<div class="card question-container">
+        <div class="card-header category-box {{ currentQuestion.category }}">
+            {{ currentQuestion.category }} <span class='difficulty'>Difficulty: {{ currentQuestion.difficulty }} </span>
+        </div>
+        <div class="card-body">
+            <p class="card-text question-text-box">
+                    {{ currentQuestion.text }}
+            </p>
+            <p class='card-text hint-box'>
+                    Hint: <span class='hint-value'>{{ hint }}</span>
+            </p>
+        </div>
+    <div class="card-footer">
+        <div class='points-box'>
+            {{ timeLeft}}sec left<span class='points'> Points: {{ points }} </span>
+        </div>
+    </div>    
+</div>
