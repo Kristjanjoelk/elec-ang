@@ -9,9 +9,9 @@ import { Message } from '../../../services/message';
 })
 export class InputComponent implements OnInit {
 
-  @Input()
   test: string;
   title: string;
+  @Input()
   messageValue: string = '';
 
   constructor(private chatSer: ChatService) { 
@@ -22,10 +22,12 @@ export class InputComponent implements OnInit {
   }
   
   onEnter(value: string) { 
+    if(!value) {
+      return;
+    }
     let message = new Message('test', value);
-    console.table(message);
     this.chatSer.addMessage(message); 
-    this.messageValue = null;
+    this.messageValue = '';
   }
 
 }

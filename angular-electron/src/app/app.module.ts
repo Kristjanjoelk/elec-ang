@@ -4,6 +4,7 @@ import '../polyfills';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
@@ -22,11 +23,14 @@ import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginService } from './components/login/login.service';
 import { CanvasComponent } from './components/canvas/canvas.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { InputComponent } from './components/chat/input/input.component';
 import { MainComponent } from './components/chat/main/main.component';
 import { MembersComponent } from './components/chat/members/members.component';
+import { MemberComponent } from './components/chat/members/member/member.component';
 import { QuestionComponent } from './components/chat/question/question.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -47,13 +51,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     InputComponent,
     MembersComponent,
     QuestionComponent,
-    WebviewDirective
+    MemberComponent,
+    LoginComponent,
+    WebviewDirective,
+    // NgbdModalContent
   ],
+  entryComponents: [ /* NgbdModalContent */],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule.forRoot(),
     SocketIoModule.forRoot(config),
     TranslateModule.forRoot({
       loader: {
@@ -63,7 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService, ChatService],
+  providers: [ElectronService, ChatService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

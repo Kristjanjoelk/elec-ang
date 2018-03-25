@@ -2,24 +2,39 @@ import { Injectable, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/map';
 import { Socket } from 'ng-socket-io';
 import { ISubscription } from "rxjs/Subscription";
  
 import { Message } from './message';
+import { Member } from '../components/chat/members/member.interface';
  
 @Injectable()
 export class ChatService {
   messages: Message[] = [];
-  update: Subject<Message[]> = new Subject<Message[]>();
+  questions: any[] = [];
+  memb: Member = null;
+  updateMessages: Subject<Message[]> = new Subject<Message[]>();
+  updateMembers: Subject<Member[]> = new Subject<Member[]>();
+  updateQuestions: Subject<any[]> = new Subject<any[]>();
   subscription: ISubscription;
 
   constructor(private socket: Socket) { 
     this.socket
-      .on('message', (data, message) => {
-        console.log('data from server', data, message);
-        this.messages.push(message);
-        this.update.next(this.messages);
+      .on('message', (event, data) => {
+        if(event === 'questions') {
+          console.log('data asdfasdf questions from server', data);
+          this.questions = data.results;
+          console.log('after data results', this.questions);
+          this.updateQuestions.next(this.questions);
+        }
+        if(event === 'membersupdate') {
+          console.log('newmember from server', data);
+          this.updateMembers.next(data);
+        } else {
+          console.log('data from server', data);
+          this.messages.push(data);
+          this.updateMessages.next(this.messages);
+        }
       });
   }
 
@@ -28,10 +43,11 @@ export class ChatService {
     return of(this.messages);
   }
 
+  getQuestions() {
+    this.socket.emit('getQuestions');
+  }
+
   addMessage(message: Message) {
-    // console.log(this.messages, message);
-    // this.messages.push(message);
-    // this.update.next(this.messages);
     this.socket.emit('message', message);
   }
 
@@ -39,12 +55,12 @@ export class ChatService {
     for(let i = 0; i < _messages.length; i++) {
       this.messages.push(_messages[i]);
     }
-    this.update.next(this.messages);
+    this.updateMessages.next(this.messages);
     this.socket.emit('messages', _messages);
   }
 
-  test() {
-    console.log('TEST TEST FROM CHAT SERVICE');
+  login(loginObject) {
+    this.socket.emit('login', loginObject);
   }
 
   clear() {

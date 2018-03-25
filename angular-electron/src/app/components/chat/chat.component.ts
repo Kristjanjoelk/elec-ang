@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit {
 
   constructor(private chatSer: ChatService) {
     
-    this.subscription = this.chatSer.update.subscribe(
+    this.subscription = this.chatSer.updateMessages.subscribe(
       data => {
         console.log('Data:', data);
         this.messages = data;
@@ -25,7 +25,6 @@ export class ChatComponent implements OnInit {
       () => console.log('complete')
     );
     this.title = 'This is the chat container';
-    this.chatSer.test();
     this.messages = [
       new Message('johnson1', 'hey whats up'),
       new Message('johnson2', 'im cool, you?'),

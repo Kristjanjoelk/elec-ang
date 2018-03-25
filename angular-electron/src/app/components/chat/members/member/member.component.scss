@@ -1,0 +1,23 @@
+.badge {
+  font-size: 100%;
+  &.geography {
+      background-color: #009999;
+  }
+  &.entertainment {
+    background-color: #ff6666;
+  }
+  &.history {
+    background-color: #f4d142;
+  }
+  &.artsLiterature {
+    background-color: #86592d;
+  }
+  &.scienceNature {
+    background-color: #008000;
+  }
+  &.sportsLeisure {
+      background-color: #ffaa00;
+  }
+}
+
+

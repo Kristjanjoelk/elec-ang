@@ -1,5 +1,7 @@
-<div>
+<div class="list-group">
     <div *ngFor='let member of members'>
-        {{member.name}}
+        <app-chat-member
+            [member]='member'>
+        </app-chat-member>
     </div>
 </div>
