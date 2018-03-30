@@ -1,17 +1,17 @@
 export class Question {
 
-    public text: string;
+    public question: string;
     public answer: string;
     public difficulty: string;
     public category: string;
     public hints: string[];
 
-    constructor (private question: any) {
-        this.text = question.question;
-        this.answer = question.correct_answer;
-        this.difficulty = question.difficulty;
-        this.category = question.category;
-        this.hints = question.hints;
+    constructor (quest: any) {
+        this.question = quest.question;
+        this.answer = quest.correct_answer;
+        this.difficulty = quest.difficulty;
+        this.category = quest.category;
+        this.hints = quest.hints;
     }
 
     

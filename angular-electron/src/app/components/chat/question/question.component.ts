@@ -24,7 +24,8 @@ export class QuestionComponent implements OnInit {
     constructor(private chatSer: ChatService) {
         this.subscription = this.chatSer.updateQuestions.subscribe(
             data => {
-                console.log('helluuu');
+                console.log('Question data recieved');
+                console.table(data);
                 this.populateQuestions(data);
             },
             err => console.log('error in quetsions sub', err),
@@ -42,45 +43,38 @@ export class QuestionComponent implements OnInit {
         this.points = this.diff[this.currentQuestion.difficulty];
     }
 
-    populateQuestions(data) {
-        console.log('populating data', data);
-        for(let i = 0; i < data.length; i++) {
-            this.questionList.push(new Question(data[i]));
-        }
-        this.counter = 0;
-        this.hintLevel = 0;
-        this.currentQuestion = this.questionList[this.counter];
-        this.currentHint = this.currentQuestion.hints[this.hintLevel];
-        this.getPoints();
-        this.startGame();
-    }
+    populateQuestions(data: any) {
+        this.currentQuestion = data.data;
+        this.currentHint = data.hint;
+        this.timeLeft = data.timeLeft;
+    }   
 
-    startGame() {
-        var self = this;
-        setInterval(function() {
-            self.timeLeft -= 1;
-            if(self.timeLeft <= 30 && self.hintLevel === 0) {
-                self.hintLevel += 1;
-                self.currentHint = self.currentQuestion.hints[self.hintLevel];
-            }
-            if(self.timeLeft <= 15 && self.hintLevel === 1) {
-                self.hintLevel += 1;
-                self.currentHint = self.currentQuestion.hints[self.hintLevel];
-            }
-            if(self.timeLeft <= 0) {
-                self.timeLeft = 60;
-                self.nextQuestion();
-            }
-        }, 1 * 1000);
-    }
+    // startGame() {
+    //     var self = this;
+    //     setInterval(function() {
+    //         self.timeLeft -= 1;
+    //         if(self.timeLeft <= 30 && self.hintLevel === 0) {
+    //             self.hintLevel += 1;
+    //             self.currentHint = self.currentQuestion.hints[self.hintLevel];
+    //         }
+    //         if(self.timeLeft <= 15 && self.hintLevel === 1) {
+    //             self.hintLevel += 1;
+    //             self.currentHint = self.currentQuestion.hints[self.hintLevel];
+    //         }
+    //         if(self.timeLeft <= 0) {
+    //             self.timeLeft = 60;
+    //             self.nextQuestion();
+    //         }
+    //     }, 1 * 1000);
+    // }
 
-    nextQuestion() {
-        this.hintLevel = 0;
-        this.currentHint = this.currentQuestion.hints[this.hintLevel];
-        this.counter = this.counter + 1 < 10 ? this.counter + 1 : 0;
-        this.currentQuestion = this.questionList[this.counter];
-        this.getPoints();
-    }
+    // nextQuestion() {
+    //     this.hintLevel = 0;
+    //     this.currentHint = this.currentQuestion.hints[this.hintLevel];
+    //     this.counter = this.counter + 1 < 10 ? this.counter + 1 : 0;
+    //     this.currentQuestion = this.questionList[this.counter];
+    //     this.getPoints();
+    // }
 
 
 

@@ -21,16 +21,16 @@ export class ChatService {
   constructor(private socket: Socket) { 
     this.socket
       .on('message', (event, data) => {
-        if(event === 'questions') {
+        if(event === 'questiondata') {
           console.log('data asdfasdf questions from server', data);
-          this.questions = data.results;
-          console.log('after data results', this.questions);
-          this.updateQuestions.next(this.questions);
+          // this.questions = data.results;
+          // console.log('after data results', this.questions);
+          this.updateQuestions.next(data);
         }
         if(event === 'membersupdate') {
           console.log('newmember from server', data);
           this.updateMembers.next(data);
-        } else {
+        } else if(event === 'message') {
           console.log('data from server', data);
           this.messages.push(data);
           this.updateMessages.next(this.messages);

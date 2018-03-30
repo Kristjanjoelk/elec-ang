@@ -25,7 +25,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './components/login/login.service';
-import { CanvasComponent } from './components/canvas/canvas.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { InputComponent } from './components/chat/input/input.component';
 import { MainComponent } from './components/chat/main/main.component';
@@ -45,7 +44,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
-    // CanvasComponent,
     ChatComponent,
     MainComponent,
     InputComponent,
