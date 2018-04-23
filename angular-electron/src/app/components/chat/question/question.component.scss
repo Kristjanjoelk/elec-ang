@@ -5,15 +5,32 @@
 
 
 .category-box {
-    &.History {
-        background-color: #f4d142;
-    }
+    &.geography {
+      background-color: #1281b4;
+  }
+  &.entertainment {
+    background-color: #f63838;
+  }
+  &.history {
+    background-color: #f5ec6f;
+  }
+  &.artsLiterature {
+    background-color: #86592d;
+  }
+  &.scienceNature {
+    background-color: #30bd30;
+  }
+  &.sportsLeisure {
+      background-color: #ffaa00;
+  }
 }
 
 .hint-value {
-    font-size: 14px;
+    font-size: 21px;
 }
-
+.question-text-box {
+    font-size: 21px;
+}
 .points,
 .difficulty {
     float: right;

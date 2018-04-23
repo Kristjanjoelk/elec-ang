@@ -10,7 +10,6 @@ import { ChatService } from '../../services/chat.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-  title: string;
   messages: Message[]
   subscription: ISubscription; 
 
@@ -18,17 +17,16 @@ export class ChatComponent implements OnInit {
     
     this.subscription = this.chatSer.updateMessages.subscribe(
       data => {
-        console.log('Data:', data);
+        // console.log('Data:', data);
         this.messages = data;
       },
       err => console.log('error in message sub', err),
       () => console.log('complete')
     );
-    this.title = 'This is the chat container';
-    this.messages = [
-      new Message('johnson1', 'hey whats up'),
-      new Message('johnson2', 'im cool, you?'),
-      new Message('johnson3', 'me?')]
+    // this.messages = [
+    //   new Message('johnson1', 'hey whats up'),
+    //   new Message('johnson2', 'im cool, you?'),
+    //   new Message('johnson3', 'me?')]
   }
 
   ngOnInit() {

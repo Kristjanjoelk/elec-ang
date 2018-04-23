@@ -5,6 +5,7 @@ export class Question {
     public difficulty: string;
     public category: string;
     public hints: string[];
+    public cat: string;
 
     constructor (quest: any) {
         this.question = quest.question;
@@ -12,6 +13,7 @@ export class Question {
         this.difficulty = quest.difficulty;
         this.category = quest.category;
         this.hints = quest.hints;
+        this.cat = quest.cat;
     }
 
     

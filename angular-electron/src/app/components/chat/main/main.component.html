@@ -1,5 +1,6 @@
-<div class='messages-container'>
-        <div *ngFor='let message of messages'>
-                <span>{{message.date}}:{{message.sender}}:</span> {{message.message}}
+<div class='list-group messages-container'>
+        <div class='list-group-item  align-bottom' *ngFor='let message of messages'>
+                <span>{{message.date}}</span><span class="badge badge-info">{{message.sender}}</span> 
+                <p>{{message.message}}</p>
         </div>
 </div>

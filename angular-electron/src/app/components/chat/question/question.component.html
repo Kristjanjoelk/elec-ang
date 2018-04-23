@@ -1,5 +1,5 @@
 <div class="card question-container">
-        <div class="card-header category-box {{ currentQuestion.category }}">
+        <div class="card-header category-box {{ currentQuestion.cat }}">
             {{ currentQuestion.category }} <span class='difficulty'>Difficulty: {{ currentQuestion.difficulty }} </span>
         </div>
         <div class="card-body">
@@ -11,8 +11,11 @@
             </p>
         </div>
     <div class="card-footer">
-        <div class='points-box'>
-            {{ timeLeft}}sec left<span class='points'> Points: {{ points }} </span>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" [style.width]="(100 *(timeLeft / 60)) + '%'" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
+        <!-- <div class='points-box'>
+            {{ timeLeft}}sec left<span class='points'> Points: {{ points }} </span>
+        </div> -->
     </div>    
 </div>

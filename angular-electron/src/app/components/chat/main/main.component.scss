@@ -1,9 +1,8 @@
 .messages-container {
-    // flex: 1 0px;
-    width: 100%;
     position: absolute;
-    left: 20px;
+    left: 0;
+    right: 0;
     bottom: 0;
-}
-.messages-container > div {
+    overflow-y: scroll;
+    max-height: 100%;
 }
