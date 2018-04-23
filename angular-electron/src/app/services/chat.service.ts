@@ -59,8 +59,15 @@ export class ChatService {
     this.socket.emit('messages', _messages);
   }
 
-  login(loginObject) {
-    this.socket.emit('login', loginObject);
+  login(loginObject, callback) {
+    console.log('inside login..');
+    this.socket.emit('login', loginObject, function(err, res) {
+      if(err) {
+        return callback(err, null);
+      } else {
+        return callback(null, err);
+      }
+    });
   }
 
   clear() {

@@ -10,7 +10,7 @@ import { ISubscription } from "rxjs/Subscription";
 export class HomeComponent implements OnInit {
   subscription: ISubscription;
   message: string;
-  loggedIn: boolean = false;
+  loggedIn: boolean = true;
 
   constructor(private loginServ: LoginService) { 
     this.subscription = this.loginServ.updateLogin.subscribe(

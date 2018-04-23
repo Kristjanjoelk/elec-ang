@@ -26,11 +26,11 @@ export class MembersComponent implements OnInit {
         );
         this.title = 'This is the member container';
         this.members = [
-            // new Member({
-            //     name: 'johnson1',
-            //     totalPoints: 1337,
-            //     pointDistribution: { geography: 5, entertainment: 5, history: 5, artsLiterature: 5, scienceNature: 5, sportsLeisure: 5 }
-            // }),
+            new Member({
+                name: 'johnson1',
+                totalPoints: 1337,
+                pointDistribution: { geography: 5, entertainment: 5, history: 5, artsLiterature: 5, scienceNature: 5, sportsLeisure: 5 }
+            }),
             // new Member({
             //     name: 'johnson2',
             //     totalPoints: 731,

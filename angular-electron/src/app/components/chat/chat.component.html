@@ -1,14 +1,19 @@
-
-<div class='main-container'>
-    <app-question></app-question> 
-    <div class='chat-container'>
-        <app-chat-main
-            [messages]='messages'>
-        
-        </app-chat-main >
-        
-        
+<div class='row align-items-start'>
+    <div class='col main-container'>
+        <app-question></app-question> 
+        <div class='chat-container'>
+            <app-chat-main
+                [messages]='messages'>
+            
+            </app-chat-main >
+            
+            
+        </div>
+        <app-chat-input></app-chat-input>
     </div>
-    <app-chat-input></app-chat-input>
-    <div>
+    <div class='col members-container'>
+        <app-chat-members>
+                    
+        </app-chat-members>
+    </div>
 </div>

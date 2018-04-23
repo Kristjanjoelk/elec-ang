@@ -11,7 +11,8 @@ export class LoginComponent implements OnInit {
 
   name: string;
   password: string;
-  loggedIn: Boolean = false;
+  loggedIn: Boolean = true;
+  error: string = '';
   constructor(private loginServ: LoginService) {
   }
 
@@ -20,13 +21,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     var self = this;
-    this.loginServ.login({ name: this.name, password: this.password })
-      .subscribe(res => {
-        if(res) {
-          self.loggedIn = true;
-          self.loginServ.setLogin(true);          
-        }
-      });
+    this.loginServ.login({ name: this.name, password: this.password }, function(err, res) {
+      if(err) {
+        this.error = err;
+      } 
+      else {
+        self.loggedIn = true;
+        self.loginServ.setLogin(true);
+      }
+    })
   }
 
 }

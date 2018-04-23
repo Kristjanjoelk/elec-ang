@@ -25,9 +25,11 @@ export class LoginService {
     }
 
 
-    login (loginObject) {
-        this.chatSer.login(loginObject);
-        return this.http.post<Member>(this.loginUrl, loginObject, httpOptions);
+    login (loginObject, callback) {
+        this.chatSer.login(loginObject, function(err, res) {
+            callback(err, res);
+        });
+        // return this.http.post<Member>(this.loginUrl, loginObject, httpOptions);
     }
 
     setLogin(bool) {

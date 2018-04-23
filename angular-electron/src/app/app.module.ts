@@ -32,7 +32,7 @@ import { MembersComponent } from './components/chat/members/members.component';
 import { MemberComponent } from './components/chat/members/member/member.component';
 import { QuestionComponent } from './components/chat/question/question.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 
 // AoT requires an exported function for factories
